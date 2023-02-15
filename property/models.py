@@ -75,7 +75,7 @@ class Complain(models.Model):
         verbose_name='Квартира в жалобе',
         on_delete=models.CASCADE
     )
-    complain_text = models.TextField("Текст жалобы")
+    text = models.TextField("Текст жалобы")
 
     def __str__(self):
         return f"{self.author}: {self.complain_text}"
