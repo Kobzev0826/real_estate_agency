@@ -54,7 +54,7 @@ class Flat(models.Model):
     liked_by = models.ManyToManyField(
         User,
         blank=True,
-        related_name='Liked_by_info',
+        related_name='liked_flats',
         verbose_name='Кому понравилось'
     )
 
