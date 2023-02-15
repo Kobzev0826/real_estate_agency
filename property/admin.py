@@ -30,6 +30,4 @@ class OwnerAdmin(admin.ModelAdmin):
     inlines = [FlatInline, ]
     exclude = ['owners_flats']
 
-# admin.site.register(Flat, FlatAdmin)
-# admin.site.register(Complain, ComplainAdmin)
-# admin.site.register(Owner, OwnerAdmin)
+
