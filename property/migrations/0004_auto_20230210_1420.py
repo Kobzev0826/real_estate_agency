@@ -4,16 +4,12 @@ from django.db import migrations
 
 
 def mark_new_buildings_automatically(apps, schema_editor):
-    flat_model = apps.get_model('property', 'Flat')
-    for flat in flat_model.objects.all():
-        if flat.new_building is not None:
-            continue
-        if flat.construction_year >= 2015:
-            flat.new_building = True
-            flat.save()
-        else:
-            flat.new_building = False
-            flat.save()
+    Flat = apps.get_model('property', 'Flat')
+    Flat.objects.\
+        filter(construction_year__gte=2015).\
+        filter(new_building__isnull=True).\
+        update(new_building = True)
+
 
 
 class Migration(migrations.Migration):
