@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'property.apps.PropertyConfig',
 
     "phonenumber_field",
+    "phonenumbers",
+
 ]
 
 MIDDLEWARE = [

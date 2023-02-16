@@ -4,7 +4,7 @@ from .models import Flat, Complain, Owner
 
 
 class FlatInline(admin.TabularInline):
-    model = Owner.owners_flats.through
+    model = Owner.flats.through
     raw_id_fields = ['owner']
 
 
@@ -15,19 +15,19 @@ class FlatAdmin(admin.ModelAdmin):
     list_display = ['address', 'price', 'new_building', 'construction_year']
     list_editable = ['new_building']
     list_filter = ['new_building']
-    raw_id_fields = ("liked_by",)
+    raw_id_fields = ("likes",)
     inlines = [FlatInline, ]
 
 
 @admin.register(Complain)
 class ComplainAdmin(admin.ModelAdmin):
-    raw_id_fields = ("flat_id", 'author',)
+    raw_id_fields = ("flat", 'author',)
 
 
 @admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
-    raw_id_fields = ("owners_flats",)
+    raw_id_fields = ("flats",)
     inlines = [FlatInline, ]
-    exclude = ['owners_flats']
+    exclude = ['flats']
 
 

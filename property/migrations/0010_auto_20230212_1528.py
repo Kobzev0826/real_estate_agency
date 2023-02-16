@@ -6,7 +6,10 @@ from django.db import migrations
 def add_owners_from_flat(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Owner = apps.get_model('property', 'Owner')
-    for flat in Flat.objects.all():
+    all_flats = Flat.objects.all()
+    if not all_flats.exists():
+        return
+    for flat in all_flats.iterator():
         Owner.objects.get_or_create(
             owner_name=flat.owner, owners_phonenumber=flat.owners_phonenumber,
             owner_pure_phone=flat.owner_pure_phone, )
