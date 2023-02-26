@@ -65,13 +65,13 @@ class Flat(models.Model):
 class Complain(models.Model):
     author = models.ForeignKey(
         User,
-        related_name='user',
+        related_name='users',
         verbose_name='Кто жалуется',
         on_delete=models.CASCADE
     )
     flat = models.ForeignKey(
         Flat,
-        related_name='flat',
+        related_name='flats',
         verbose_name='Квартира в жалобе',
         on_delete=models.CASCADE
     )
@@ -89,7 +89,7 @@ class Owner(models.Model):
         'Нормализованный номер владельца',
         db_index=True, blank=True, null=True)
     flats = models.ManyToManyField(
-        Flat, related_name='owner',
+        Flat, related_name='owners',
         db_index=True, verbose_name='Квартиры в собственности', blank=True)
 
     def __str__(self):
