@@ -7,7 +7,6 @@ def mark_new_buildings_automatically(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Flat.objects.\
         filter(construction_year__gte=2015).\
-        filter(new_building__isnull=True).\
         update(new_building = True)
 
 

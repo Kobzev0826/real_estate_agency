@@ -10,10 +10,10 @@ def add_owners_from_flat(apps, schema_editor):
     if not all_flats.exists():
         return
     for flat in all_flats.iterator():
-        owner = Owner.objects.get_or_create(
+        owner, _ = Owner.objects.get_or_create(
             owner_name=flat.owner, owners_phonenumber=flat.owners_phonenumber,
             owner_pure_phone=flat.owner_pure_phone, )
-        owner[0].owners_flats.set([flat])
+        owner.owners_flats.set([flat])
 
 
 class Migration(migrations.Migration):
