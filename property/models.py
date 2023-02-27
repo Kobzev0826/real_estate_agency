@@ -65,13 +65,13 @@ class Flat(models.Model):
 class Complain(models.Model):
     author = models.ForeignKey(
         User,
-        related_name='users',
+        related_name='complains',
         verbose_name='Кто жалуется',
         on_delete=models.CASCADE
     )
     flat = models.ForeignKey(
         Flat,
-        related_name='flats',
+        related_name='complains',
         verbose_name='Квартира в жалобе',
         on_delete=models.CASCADE
     )
